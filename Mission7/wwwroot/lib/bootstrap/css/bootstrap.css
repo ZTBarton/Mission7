@@ -85,11 +85,11 @@ body {
 }
 
 hr {
-  margin: 1rem 0;
-  color: inherit;
-  background-color: currentColor;
-  border: 0;
-  opacity: 0.25;
+    margin: 1rem 0;
+    color: inherit;
+    background-color: currentColor;
+    border: 0;
+    opacity: 0.25;
 }
 
 hr:not([size]) {
@@ -11262,5 +11262,6 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+
 
 /*# sourceMappingURL=bootstrap.css.map */
