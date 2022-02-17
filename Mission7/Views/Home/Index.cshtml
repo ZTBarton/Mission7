@@ -1,4 +1,29 @@
 ﻿@{
 }
 
-<h1>Book Store</h1>
+@model BooksViewModel
+
+<h1>@ViewBag.Calc</h1>
+
+<h1>Books</h1>
+
+@foreach (Books b in Model.Books)
+{
+    <h3>@b.Title</h3>
+
+    <ul>
+        <li>Author: @b.Author</li>
+        <li>Category: @b.Category</li>
+        <li>ISBN: @b.Isbn</li>
+        <li>Classification: @b.Classification</li>
+        <li>Publisher: @b.Publisher</li>
+        <li>Page Count: @b.PageCount Pages</li>
+        <li>Price: $@b.Price</li>
+
+
+    </ul>
+
+    <br />
+}
+<div page-model="@Model.PageInfo" page-action=""></div>
+
