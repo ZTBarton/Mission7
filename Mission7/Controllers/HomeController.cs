@@ -19,16 +19,16 @@ namespace Mission7.Controllers
             repo = temp;
         }
 
-        public IActionResult Index(int pageNum = 1)
+        public IActionResult Index(string bookCategory, int pageNum = 1)
         {
             int pageSize = 10;
 
             var x = new BooksViewModel
             {
-                Books = repo.Books.OrderBy(b => b.Title).Skip(pageSize * (pageNum - 1)).Take(pageSize),
+                Books = repo.Books.Where(x => x.Category == bookCategory || bookCategory == null).OrderBy(b => b.Title).Skip(pageSize * (pageNum - 1)).Take(pageSize),
                 PageInfo = new PageInfo
                 {
-                    TotalNumBooks = repo.Books.Count(),
+                    TotalNumBooks = (bookCategory == null ? repo.Books.Count() : repo.Books.Where(x => x.Category == bookCategory).Count()),
                     BooksPerPage = pageSize,
                     CurrentPage = pageNum
                 }

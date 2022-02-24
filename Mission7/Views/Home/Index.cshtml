@@ -8,22 +8,8 @@
 
 @foreach (Books b in Model.Books)
 {
-    <h3>@b.Title</h3>
-
-    <ul>
-        <li>Author: @b.Author</li>
-        <li>Category: @b.Category</li>
-        <li>ISBN: @b.Isbn</li>
-        <li>Classification: @b.Classification</li>
-        <li>Publisher: @b.Publisher</li>
-        <li>Page Count: @b.PageCount Pages</li>
-        <li>Price: $@b.Price</li>
-
-
-    </ul>
-
-    <br />
+        <partial name="BookSummary" model="b" />
 }
-<div page-model="@Model.PageInfo" page-action=""></div>
+<div page-model="@Model.PageInfo" page-action="Index" page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-primary" page-classes-enabled="true" class="btn-group pull-right m-1"></div>
 
 </div>
