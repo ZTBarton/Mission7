@@ -20,6 +20,7 @@ namespace Mission7.Models
         }
 
         public virtual DbSet<Books> Books { get; set; }
+        public DbSet<Payment> Payments { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -40,8 +41,7 @@ namespace Mission7.Models
                     .IsUnique();
 
                 entity.Property(e => e.BookId)
-                    .HasColumnName("BookID")
-                    .ValueGeneratedNever();
+                    .HasColumnName("BookID");
 
                 entity.Property(e => e.Author).IsRequired();
 

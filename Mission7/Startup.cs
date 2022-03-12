@@ -35,11 +35,18 @@ namespace Mission7
             });
 
             services.AddScoped<IBooksRepository, EFBooksRepository>();
+            services.AddScoped<IPaymentRepository, EFPaymentRepository>();
 
             services.AddRazorPages();
 
             services.AddDistributedMemoryCache();
             services.AddSession();
+
+            services.AddScoped<Basket>(x => SessionBasket.GetBasket(x));
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddServerSideBlazor();
 
         }
 
@@ -77,6 +84,9 @@ namespace Mission7
                 endpoints.MapDefaultControllerRoute();
 
                 endpoints.MapRazorPages();
+
+                endpoints.MapBlazorHub();
+                endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
             });
         }
     }
